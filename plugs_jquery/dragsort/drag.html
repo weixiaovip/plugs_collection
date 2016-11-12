@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery.dragsort拖拽插件</title>
+</head>
+<script src="./jquery.js" type="text/javascript"></script>
+<script src="jquery.dragsort-0.5.2.js" type="text/javascript"></script>
+<body>
+<style type="text/css">
+
+    .gridly {
+        width: 960px;
+    }
+
+    .brick,.tmp{
+        float: left;
+        margin: 5px;
+        border: 2px solid #aaa;
+        width: 138px;
+        /*width: 956px;*/
+        height: 138px;
+        line-height: 140px;
+        text-align: center;
+        font-size: 26px;
+        background: #aaa;
+    }
+
+    /*所放位置的临时样式*/
+    .tmp{
+        border: 2px dashed #aaa;
+        background: transparent;
+    }
+
+</style>
+
+<div class="gridly" id="gridly">
+    <div class="brick a" >1</div>
+    <div class="brick b">2</div>
+    <div class="brick c">3</div>
+    <div class="brick d">4</div>
+    <div class="brick e">5</div>
+    <div class="brick f">6</div>
+    <div class="brick g">7</div>
+    <div class="brick h">8</div>
+    <div class="brick i">9</div>
+
+</div>
+<script>
+
+//拖拽调用
+$(".gridly").dragsort({
+    dragSelector: ".brick", //拖拽的元素
+    dragEnd: function() {console.log(this[0].innerHTML);}, //拖拽完成后的回掉函数
+    placeHolderTemplate: "<div class='tmp'>tmp</div>", //替换位置的标签
+    scrollContainer:'.gridly' //拖拽的范围,默认魏body
+});
+</script>
+</body>
+</html>
