@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="./require.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<label for="select1">品牌</label>
+<select name="" id="select1">
+    <!--<option value="">全部</option>-->
+</select>
+
+<label for="select2">车系</label>
+<select name="" id="select2"></select>
+
+<label for="select3">车辆</label>
+<select name="" id="select3"></select>
+
+<label for="select3">车牌</label>
+<select name="" id="select4"></select>
+</body>
+
+<script src="./jquery.js"></script>
+
+<script>
+
+    require(['./linkage'], function (Linkage) {
+
+        var options = {
+            apiList: [
+                {
+                    url: "./mock/getList1.json?a=1", //第一个select框获得数据的接口
+                    jsonp:'callback', //jsonp请求方式，保存callback的问号参数名称,默认为"cb"
+                    id: "select1", //第一个select框的id
+                    defaultOption:{ //select默认项的value和名称
+                        value:'empty1',
+                        name:'默认a'
+                    }
+                },
+
+                {
+                    url: "./mock/getList2.json?b=2", //第二个select框获得数据的接口
+                    jsonp:'callback', //jsonp请求方式，保存callback的问号参数名称,默认为"cb"
+                    id: "select2", //第二个select框的id
+                    paramName:'id2', //url中参数名，用来标记查询哪一个选项下的列表
+                    defaultOption:{
+//                        value:'empty2',
+                        value:'',
+                        name:'默认b'
+                    }
+                },
+
+                {
+                    url: "./mock/getList3.json", //第三个select框获得数据的接口
+                    jsonp:'callback', //jsonp请求方式，保存callback的问号参数名称
+                    id: "select3", //第三个select框的id
+                    paramName:'id3', //url中参数名，用来标记查询哪一个选项下的列表
+                    defaultOption:{
+                        value:'empty3',
+                        name:'默认c'
+                    }
+                },
+
+                {
+                    url: "./mock/getList4.json", //第四个select框获得数据的接口
+                    jsonp:'callback', //jsonp请求方式，保存callback的问号参数名称
+                    id: "select4", //第四个select框的id
+                    paramName:'id4', //url中参数名，用来标记查询哪一个选项下的列表
+                    defaultOption:{
+                        value:'empty4',
+                        name:'默认d'
+                    }
+                }
+            ],
+            isJSONP : false //是否为跨域方式请求，true为跨域jsonp方式，false为同域ajax方式
+
+        };
+
+        //创建实例
+        var linkage = new Linkage(options);
+
+        /*
+        //请求select框数据，展示并选择指定的option
+        linkage.getDataToSelect(0,{},'pp1'); //第一项选择value值为"pp1"的option
+        linkage.getDataToSelect(1,{'id1':'pp1'},'cx2');//第二项选择value值为"cx2"的option
+        linkage.getDataToSelect(2,{'id2':'cx2'},'cl3');//第三项选择value值为"cl3"的option
+        linkage.getDataToSelect(3,{'id3':'cl3'},'cp4');//第四项选择value值为"cp4"的option
+        */
+
+
+    });
+
+</script>
+</html>
